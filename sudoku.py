@@ -16,10 +16,10 @@ Grid 01
 from itertools import cycle
 def read_puzzle(filename) :
     "read a puzzle from a file, file must have only one puzzle"
-    puzzle = []
+    puzzle = list()
     with open(filename,'r') as file:
         for line in file:
-            puzzle.append(line.split('\n')[0])
+            puzzle.append(line.split(' ')[0])
     print(puzzle)
     return puzzle
 
@@ -96,18 +96,36 @@ def solve(puzzle):
             if str(puzzle[i][j]) == str(0):
                 #try a option at this place:
                 for value in options:
-                    print(f"Trying {value} in pos {i}{j}")
+                    #print(f"Trying {value} in pos {i}{j}")
                     if check_num_in_position(puzzle,i,j,value):
                         #if the value satisfies a position, substitute
                         #print(puzzle[i][j]) 
-                        replace(puzzle[i],value,j)
+                        #replace(puzzle[i],value,j)
+                        none
                     #else:
                     #    check_num_in_position(puzzle,i,j
 
-solve(puzzle)
+def solve2(puzzle,i=0,j=0):
+    if j == 10:    #row complete
+        i += 1
+        j = 0
+    
+    if  i == 10:
+        return False    #puzzle complete
+    if puzzle[i][j] ==0 :
+        if check_num_in_position(puzzle,i,j) is False:
+                
+            
+
+
+
 
 print("--------------------------------------")
-for i in range(len(puzzle[0])):
-    print(puzzle[i])
+#for i in range(len(puzzle[0])):
+#    print(puzzle[i])
 
 
+#test_String = "Hello"
+#replace(test_String,'D',4)
+#print(test_String)
+solve2(puzzle)
